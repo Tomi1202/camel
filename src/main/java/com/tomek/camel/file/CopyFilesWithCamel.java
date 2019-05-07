@@ -13,8 +13,9 @@ public class CopyFilesWithCamel {
         try {
             camelContext.addRoutes(new RouteBuilder() {
                 @Override
-                public void configure(){
+                public void configure() {
                     from("file:data/input?noop=true")
+                            .to("log:?level=INFO&showBody=true&showHeaders=true")
                             .to("file:data/output");
                 }
             });
